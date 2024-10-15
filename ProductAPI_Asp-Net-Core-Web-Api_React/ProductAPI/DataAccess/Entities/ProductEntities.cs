@@ -22,6 +22,6 @@ namespace DataAccess.Entities
         [Required]
         public int CategoryID { get; set; }
 
-        public required virtual CategoryEntities Category { get; set; }
+        public virtual CategoryEntities? Category { get; set; } // Nullable olarak işaretleyebilirsiniz
     }
 }
