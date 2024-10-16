@@ -20,8 +20,8 @@ namespace DataAccess.Context
         {
             // For scaffolding
         }
-        private DbSet<CategoryEntities>? Categories { get; set; }
-        private DbSet<ProductEntities>? Products { get; set; }
+        internal DbSet<CategoryEntities>? Categories { get; set; }
+        internal DbSet<ProductEntities>? Products { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

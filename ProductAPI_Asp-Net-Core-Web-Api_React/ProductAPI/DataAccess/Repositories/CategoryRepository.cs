@@ -1,4 +1,5 @@
 ﻿using DataAccess.Context;
+using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    internal class CategoryRepository
+    internal class CategoryRepository : GenericRepository<CategoryEntities>
     {
         private readonly ApplicationDbContext _context;
 
-        public CategoryRepository(ApplicationDbContext context)
+        public CategoryRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
+            context = _context;
         }
     }
 }
