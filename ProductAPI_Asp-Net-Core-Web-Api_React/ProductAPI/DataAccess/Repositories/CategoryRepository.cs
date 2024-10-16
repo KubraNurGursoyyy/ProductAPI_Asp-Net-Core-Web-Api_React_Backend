@@ -14,7 +14,7 @@ namespace DataAccess.Repositories
 
         public CategoryRepository(ApplicationDbContext context) : base(context)
         {
-            context = _context;
+            _context = context;
         }
     }
 }
