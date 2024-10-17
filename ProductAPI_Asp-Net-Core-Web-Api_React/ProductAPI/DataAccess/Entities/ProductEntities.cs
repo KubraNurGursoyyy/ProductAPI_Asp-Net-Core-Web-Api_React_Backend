@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    internal class ProductEntities
+    public class ProductEntities
     {
 
         [Key]

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    internal class CategoryEntities
+    public class CategoryEntities
     {
         public CategoryEntities()
         {

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DataAccess.Context;
 using DataAccess.Repositories;
+using API.Mappings;
 
 namespace API
 {
@@ -23,6 +24,8 @@ namespace API
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
                     b => b.MigrationsAssembly("DataAccess")));
+
+            services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile));
 
             // Dependency Injection yapılandırması
             //services.AddScoped<IProductService, ProductService>();
