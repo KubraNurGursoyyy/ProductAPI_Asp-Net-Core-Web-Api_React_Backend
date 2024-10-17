@@ -21,27 +21,6 @@ namespace DataAccess.Repositories
         }
         public async Task<IEnumerable<ProductEntities>> GetWhereAsync(Expression<Func<ProductEntities, bool>> predicate)
         {
-            //burada eğer istenirse ürünleri kategoriye, fiyata ve hem kategori hem fiyata göre listeleyebilmeli
-            //örnek kullanım
-            //var productsByCategory = await _productRepository.GetWhereAsync(p => p.CategoryId == desiredCategoryId);
-            //var productsByPrice = await _productRepository.GetWhereAsync(p => p.Price <= maxPrice);
-            //var productsByCategoryAndPrice = await _productRepository.GetWhereAsync(p => p.CategoryId == desiredCategoryId && p.Price <= maxPrice);
-            /*
-             * service kısmına yazılacak kod
-             Expression<Func<ProductEntities, bool>> predicate = p => true;
-                if (desiredCategoryId != null)
-                {
-                    predicate = predicate.AndAlso(p => p.CategoryId == desiredCategoryId);
-                }
-
-                if (maxPrice != null)
-                {
-                    predicate = predicate.AndAlso(p => p.Price <= maxPrice);
-                }
-
-                var filteredProducts = await _productRepository.GetWhereAsync(predicate);
-
-             */
             return await _context.Products.Where(predicate).ToListAsync();
         }
     }

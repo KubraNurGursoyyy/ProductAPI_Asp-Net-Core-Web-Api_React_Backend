@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.IRepositories
 {
-    internal interface IProductRepository : IGenericRepository<ProductEntities> 
+    public interface IProductRepository : IGenericRepository<ProductEntities> 
     {
         Task<IEnumerable<ProductEntities>> GetWhereAsync(Expression<Func<ProductEntities, bool>> predicate); // Filtreleme
     }
