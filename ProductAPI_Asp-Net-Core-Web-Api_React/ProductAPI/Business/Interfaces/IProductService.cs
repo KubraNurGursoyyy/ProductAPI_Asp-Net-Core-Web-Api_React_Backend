@@ -1,15 +1,15 @@
-﻿using DataAccess.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using DTO.DTOs;
 
 namespace Business.Interfaces
 {
-    internal interface IProductService : IGenericService<ProductEntities>
+    public interface IProductService : IGenericService<ProductDTO>
     {
-        Task<IEnumerable<ProductEntities>> GetWhereAsync(int? desiredCategoryId = null, decimal? maxPrice = null);
+        Task<IEnumerable<ProductDTO>> GetWhereAsync(int? desiredCategoryId = null, decimal? maxPrice = null);
     }
 }

@@ -1,6 +1,8 @@
-﻿using Business.Interfaces;
+﻿using AutoMapper;
+using Business.Interfaces;
 using DataAccess.Entities;
 using DataAccess.Repositories.IRepositories;
+using DTO.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +13,18 @@ using Utils;
 
 namespace Business.Services
 {
-    internal class ProductService : GenericService<ProductEntities>, IProductService
+    internal class ProductService : GenericService<ProductEntities, ProductDTO>, IProductService
     {
         private readonly IProductRepository _productRepository;
-        public ProductService(IProductRepository productRepository) : base(productRepository)
+        private readonly IMapper _mapper;
+
+        public ProductService(IProductRepository productRepository, IMapper mapper) : base(productRepository, mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProductEntities>> GetWhereAsync(int? desiredCategoryId = null, decimal? maxPrice = null)
+        public async Task<IEnumerable<ProductDTO>> GetWhereAsync(int? desiredCategoryId = null, decimal? maxPrice = null)
         {
             // Başlangıçta tüm ürünleri döndürecek bir predicate oluşturuyoruz
             Expression<Func<ProductEntities, bool>> predicate = p => true;
@@ -36,8 +41,9 @@ namespace Business.Services
                 predicate = predicate.AndAlso(p => p.Price <= maxPrice.Value);
             }
 
-            // Filtrelenmiş ürünleri alıyoruz
-            return await _productRepository.GetWhereAsync(predicate);
+            // Filtrelenmiş ürünleri alıyoruz ve Entity'den DTO'ya dönüştürüyoruz
+            var filteredEntities = await _productRepository.GetWhereAsync(predicate);
+            return _mapper.Map<IEnumerable<ProductDTO>>(filteredEntities);
 
 
         }
