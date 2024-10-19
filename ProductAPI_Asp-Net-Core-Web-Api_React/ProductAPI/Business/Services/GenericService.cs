@@ -11,7 +11,7 @@ using DTO.DTOs;
 
 namespace Business.Services
 {
-    internal class GenericService<TEntity, TDto> : IGenericService<TDto> where TEntity : class where TDto : class
+    public class GenericService<TEntity, TDto> : IGenericService<TDto> where TEntity : class where TDto : class
     {
         private readonly IGenericRepository<TEntity> _repository;
         private readonly IMapper _mapper;

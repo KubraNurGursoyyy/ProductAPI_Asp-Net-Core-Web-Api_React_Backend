@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    internal class ProductRepository : GenericRepository<ProductEntities>, IProductRepository
+    public class ProductRepository : GenericRepository<ProductEntities>, IProductRepository
     {
         private readonly ApplicationDbContext _context;
 

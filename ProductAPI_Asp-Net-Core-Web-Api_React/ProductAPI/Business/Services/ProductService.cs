@@ -13,7 +13,7 @@ using Utils;
 
 namespace Business.Services
 {
-    internal class ProductService : GenericService<ProductEntities, ProductDTO>, IProductService
+    public class ProductService : GenericService<ProductEntities, ProductDTO>, IProductService
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;

@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class CategoriesController : ControllerBase
 {
-    private readonly IGenericService<CategoryDTO> _categoryService;
+    private readonly ICategoryService _categoryService;
     private readonly IMapper _mapper;
 
-    public CategoriesController(IGenericService<CategoryDTO> categoryService, IMapper mapper)
+    public CategoriesController(ICategoryService categoryService, IMapper mapper)
     {
         _categoryService = categoryService;
         _mapper = mapper;

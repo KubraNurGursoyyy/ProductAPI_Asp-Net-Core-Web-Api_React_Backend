@@ -7,10 +7,12 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataAccess.Entities;
+using Business.Interfaces;
 
 namespace Business.Services
 {
-    internal class CategoryService : GenericService<CategoryEntities,CategoryDTO>
+
+    public class CategoryService : GenericService<CategoryEntities,CategoryDTO>, ICategoryService
     {
         private readonly IGenericRepository<CategoryEntities> _categoryRepository;
         private readonly IMapper _mapper;
