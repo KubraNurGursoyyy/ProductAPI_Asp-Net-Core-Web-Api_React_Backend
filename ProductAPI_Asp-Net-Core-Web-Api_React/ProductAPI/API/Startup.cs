@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using DataAccess.Context;
 using DataAccess.Repositories;
 using API.Mappings;
+using Business.Interfaces;
+using DataAccess.Repositories.IRepositories;
+using Business.Services;
 
 namespace API
 {
@@ -28,11 +31,14 @@ namespace API
             services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile));
 
             // Dependency Injection yapılandırması
-            //services.AddScoped<IProductService, ProductService>();
-            //services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
-            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddControllers();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,7 +52,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseAuthorization();
+//            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
