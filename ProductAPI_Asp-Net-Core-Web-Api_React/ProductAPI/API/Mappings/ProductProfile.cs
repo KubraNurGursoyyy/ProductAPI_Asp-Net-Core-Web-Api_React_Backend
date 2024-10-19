@@ -1,6 +1,6 @@
-﻿using API.DTOs;
-using AutoMapper;
+﻿using AutoMapper;
 using DataAccess.Entities;
+using DTO.DTOs;
 
 namespace API.Mappings
 {
@@ -8,7 +8,6 @@ namespace API.Mappings
     {
         public ProductProfile()
         {
-            // Product entity ve ProductDto arasında iki yönlü mapping.
             CreateMap<ProductEntities, ProductDTO>().ReverseMap();
         }
     }
