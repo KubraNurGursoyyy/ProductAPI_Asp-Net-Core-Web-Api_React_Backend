@@ -6,7 +6,6 @@ USER app
 WORKDIR /app
 EXPOSE 8080
 
-
 # Bu aşama, hizmet projesini oluşturmak için kullanılır
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
@@ -15,7 +14,6 @@ COPY ["API/API.csproj", "API/"]
 COPY ["Business/Business.csproj", "Business/"]
 COPY ["DataAccess/DataAccess.csproj", "DataAccess/"]
 COPY ["DTO/DTO.csproj", "DTO/"]
-COPY ["Utils/Utils.csproj", "Utils/"]
 RUN dotnet restore "./API/API.csproj"
 COPY . .
 WORKDIR "/src/API"
