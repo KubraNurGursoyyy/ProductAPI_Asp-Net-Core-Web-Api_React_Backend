@@ -8,8 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
-    <Folder Include="Logging\" />
+    <Compile Remove="Exceptions\**" />
+    <Compile Remove="Logging\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Logging\**" />
+    <None Remove="Exceptions\**" />
+    <None Remove="Logging\**" />
   </ItemGroup>
 
 </Project>
