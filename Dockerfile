@@ -14,6 +14,7 @@ COPY ["API/API.csproj", "API/"]
 COPY ["Business/Business.csproj", "Business/"]
 COPY ["DataAccess/DataAccess.csproj", "DataAccess/"]
 COPY ["DTO/DTO.csproj", "DTO/"]
+COPY ["Utils/Utils.csproj", "Utils/"]
 RUN dotnet restore "./API/API.csproj"
 COPY . .
 WORKDIR "/src/API"
