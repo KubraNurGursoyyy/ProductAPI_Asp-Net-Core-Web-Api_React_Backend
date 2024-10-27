@@ -25,6 +25,17 @@ namespace API
         {
             var connectionString = Environment.GetEnvironmentVariable("DefaultConnection");
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
                     b => b.MigrationsAssembly("DataAccess")));
@@ -53,7 +64,10 @@ namespace API
 
             app.UseRouting();
 
-//            app.UseAuthorization();
+            app.UseCors("AllowAllOrigins"); // CORS politikası burada uygulanır
+
+
+            //            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
