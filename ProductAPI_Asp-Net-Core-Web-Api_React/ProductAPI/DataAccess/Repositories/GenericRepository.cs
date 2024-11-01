@@ -38,8 +38,8 @@ namespace DataAccess.Repositories
 
         public async Task DeleteAsync(TEntity entity)
         {
-            var entity = await GetByIdNoTrackingAsync(entity.ID);
-            _dbSet.Remove(entity);
+            var existingEntity = await GetByIdNoTrackingAsync(entity.ID);
+            _dbSet.Remove(existingEntity);
             await _applicationDbContext.SaveChangesAsync();
         }
 
