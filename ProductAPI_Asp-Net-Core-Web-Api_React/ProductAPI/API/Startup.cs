@@ -27,10 +27,10 @@ namespace API
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalhost",
+                options.AddPolicy("AllowSpecificOrigin",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:8080")
+                        builder.WithOrigins("https://product-api-aspnetcore.fly.dev")
                                .AllowAnyMethod()
                                .AllowAnyHeader();
                     });
@@ -62,10 +62,9 @@ namespace API
 
             app.UseHttpsRedirection();
 
-            app.UseCors("AllowAllOrigins"); // CORS politikası burada uygulanır
-
             app.UseRouting();
 
+            app.UseCors("AllowAllOrigins"); // CORS politikası burada uygulanır
 
 
             //            app.UseAuthorization();
