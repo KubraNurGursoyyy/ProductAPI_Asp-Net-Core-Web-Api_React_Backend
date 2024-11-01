@@ -62,9 +62,10 @@ namespace API
 
             app.UseHttpsRedirection();
 
+            app.UseCors("AllowAllOrigins"); // CORS politikası burada uygulanır
+
             app.UseRouting();
 
-            app.UseCors(); // CORS politikası burada uygulanır
 
 
             //            app.UseAuthorization();
