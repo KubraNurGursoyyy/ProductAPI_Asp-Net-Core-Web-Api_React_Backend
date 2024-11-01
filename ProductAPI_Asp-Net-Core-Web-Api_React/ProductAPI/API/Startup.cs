@@ -27,11 +27,11 @@ namespace API
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins",
+                options.AddPolicy("SpecificMethods",
                     builder =>
                     {
                         builder.AllowAnyOrigin()
-                               .AllowAnyMethod()
+                               .WithMethods("GET", "POST", "DELETE", "PUT")
                                .AllowAnyHeader();
                     });
             });
@@ -64,7 +64,7 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors("AllowAllOrigins"); // CORS politikası burada uygulanır
+            app.UseCors("SpecificMethods"); // CORS politikası burada uygulanır
 
 
             //            app.UseAuthorization();
