@@ -27,10 +27,10 @@ namespace API
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins",
+                options.AddPolicy("AllowLocalhost",
                     builder =>
                     {
-                        builder.AllowAnyOrigin()
+                        builder.WithOrigins("http://localhost:8080")
                                .AllowAnyMethod()
                                .AllowAnyHeader();
                     });
