@@ -23,11 +23,6 @@ namespace DataAccess.Repositories
 
         }
 
-        public async Task<TEntity> GetByIdNoTrackingAsync(int id)
-        {
-            return await _dbSet.AsNoTracking().FirstOrDefaultAsync(e => EF.Property<int>(e, "ID") == id);
-        }
-
         public async Task<TEntity> AddAsync(TEntity entity)
         {
             await _dbSet.AddAsync(entity);
@@ -38,8 +33,7 @@ namespace DataAccess.Repositories
 
         public async Task DeleteAsync(TEntity entity)
         {
-            var existingEntity = await GetByIdNoTrackingAsync(entity.ID);
-            _dbSet.Remove(existingEntity);
+            _dbSet.Remove(entity);
             await _applicationDbContext.SaveChangesAsync();
         }
 
