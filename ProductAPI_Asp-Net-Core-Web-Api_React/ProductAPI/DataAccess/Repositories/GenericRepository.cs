@@ -33,16 +33,8 @@ namespace DataAccess.Repositories
 
         public async Task DeleteAsync(TEntity entity)
         {
-            var existingEntity = await _dbSet.FindAsync(entity.Id); 
-            if (existingEntity != null)
-            {
-                _dbSet.Remove(existingEntity);
-                await _applicationDbContext.SaveChangesAsync();
-            }
-            else
-            {
-                throw new Exception("Entity not found");
-            }
+            _dbSet.Remove(entity);
+            await _applicationDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync()
