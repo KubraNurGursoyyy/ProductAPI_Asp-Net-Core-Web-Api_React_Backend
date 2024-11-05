@@ -69,7 +69,7 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            await _productService.DeleteAsync(product);
+            await _productService.DeleteAsync(id);
             return NoContent();
         }
 
