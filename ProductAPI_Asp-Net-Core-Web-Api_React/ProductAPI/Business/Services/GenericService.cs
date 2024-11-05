@@ -29,10 +29,9 @@ namespace Business.Services
             await _repository.AddAsync(entity);
         }
 
-        public async Task DeleteAsync(TDto dto)
+        public async Task DeleteAsync(int id)
         {
-            var entity = _mapper.Map<TEntity>(dto);
-            await _repository.DeleteAsync(entity);
+            await _repository.DeleteAsync(id);
         }
 
         public async Task<IEnumerable<TDto>> GetAllAsync()

@@ -67,7 +67,7 @@ public class CategoriesController : ControllerBase
             return NotFound();
         }
 
-        await _categoryService.DeleteAsync(category);
+        await _categoryService.DeleteAsync(id);
         return NoContent();
     }
 }

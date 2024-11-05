@@ -31,9 +31,13 @@ namespace DataAccess.Repositories
 
         }
 
-        public async Task DeleteAsync(TEntity entity)
+        public async Task DeleteAsync(int id)
         {
-            _applicationDbContext.Entry(entity).State = EntityState.Detached;
+            var entity = await _dbSet.FindAsync(id);
+            if (entity == null)
+            {
+                throw new KeyNotFoundException("Entity not found");
+            }
             _dbSet.Remove(entity);
             await _applicationDbContext.SaveChangesAsync();
         }
