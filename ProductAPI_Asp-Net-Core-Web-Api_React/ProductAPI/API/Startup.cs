@@ -34,14 +34,15 @@ namespace API
                                .WithMethods("GET", "POST", "DELETE", "PUT")
                                .AllowAnyHeader();
                     });
-                options.EnableSensitiveDataLogging(); // Enables logging of conflicting key values
 
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
+            {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
-                    b => b.MigrationsAssembly("DataAccess")));
-
+                  b => b.MigrationsAssembly("DataAccess"));
+                options.EnableSensitiveDataLogging(); // Enables logging of conflicting key values for Entity Framework
+            });
             services.AddAutoMapper(typeof(ProductProfile), typeof(CategoryProfile));
 
             // Dependency Injection yapılandırması
