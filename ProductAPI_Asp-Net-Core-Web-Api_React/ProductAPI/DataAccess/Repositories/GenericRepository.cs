@@ -33,6 +33,7 @@ namespace DataAccess.Repositories
 
         public async Task DeleteAsync(TEntity entity)
         {
+            _applicationDbContext.Entry(entity).State = EntityState.Detached;
             _dbSet.Remove(entity);
             await _applicationDbContext.SaveChangesAsync();
         }
