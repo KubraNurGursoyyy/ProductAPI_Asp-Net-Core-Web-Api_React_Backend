@@ -34,6 +34,8 @@ namespace API
                                .WithMethods("GET", "POST", "DELETE", "PUT")
                                .AllowAnyHeader();
                     });
+                options.EnableSensitiveDataLogging(); // Enables logging of conflicting key values
+
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
